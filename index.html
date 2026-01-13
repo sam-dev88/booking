@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grow With Us - Book Your Session</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Elevate Your Brand's Voice</h1>
+    <p>Select a date first, then confirm your booking with payment.</p>
+    <button class="btn-primary" onclick="openCalendly()">Book a Session</button>
+  </div>
+</section>
+
+<!-- SERVICES HIGHLIGHT -->
+<section class="services">
+  <h2>What We Offer</h2>
+  <div class="cards">
+    <div class="card">Brand Strategy</div>
+    <div class="card">Web & UI Planning</div>
+    <div class="card">Marketing Session</div>
+    <div class="card">Creative Consultation</div>
+  </div>
+</section>
+
+<!-- CALENDLY POPUP (hidden until openCalendly runs) -->
+<div id="calendlyPopup" class="calendly-popup">
+  <div class="close-btn" onclick="closeCalendly()">×</div>
+  <div class="calendly-inline-widget" data-url="https://calendly.com/samiraramo815/30min?&background_color=222222&text_color=ffffff&primary_color=ffbd59"
+  style="min-width: 320px; height: 90vh;"></div>
+</div>
+
+<script>
+  function openCalendly() {
+    document.getElementById("calendlyPopup").style.display = "block";
+    Calendly.initInlineWidget({
+      url: "https://calendly.com/samiraramo815/30min?",
+      parentElement: document.querySelector('#calendlyPopup .calendly-inline-widget'),
+      prefill: {},
+      utm: {}
+    });
+  }
+
+  function closeCalendly() {
+    document.getElementById("calendlyPopup").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

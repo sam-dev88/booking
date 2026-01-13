@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  overflow-x: hidden;
+  background: #f8f8f8;
+}
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(hero2.png);
+  background-position: center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: #111;
+  padding: 4rem 2rem;
+}
+@media (max-width: 768px) {
+  .hero {
+    background-image: url(hero.jpg);
+  }
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.btn-primary {
+  padding: 1rem 2rem;
+  background: #111;
+  color: #ffbd59;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+.services {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendly-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #f0f0f0;
+  justify-content: flex-start; /* align to top */
+  align-items: stretch;
+  padding: 0;
+  z-index: 9999;
+  overflow: hidden; /* no scroll for full screen */
+  flex-direction: column;
+}
+@media (max-width: 767px) {
+  .calendly-popup {
+    padding: 1rem;
+  }
+}
+
+.calendly-popup .close-btn {
+  position: fixed; /* fixed on screen */
+  top: 1rem;
+  right: 1rem;
+  font-size: 2.5rem;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.calendly-popup .calendly-inline-widget {
+  width: 100vw; /* full width */
+  height: 100vh; /* full height */
+  border-radius: 0; /* remove rounding */
+}
