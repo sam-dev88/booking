@@ -36,6 +36,9 @@ body {
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
+  background: #ffbd59;
+  padding:.5rem 1rem;
+  border-radius: 10px;
 }
 .btn-primary {
   padding: 1rem 2rem;
@@ -79,7 +82,6 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #f0f0f0;
   justify-content: flex-start; /* align to top */
   align-items: stretch;
   padding: 0;
@@ -87,11 +89,7 @@ body {
   overflow: hidden; /* no scroll for full screen */
   flex-direction: column;
 }
-@media (max-width: 767px) {
-  .calendly-popup {
-    padding: 1rem;
-  }
-}
+
 
 .calendly-popup .close-btn {
   position: fixed; /* fixed on screen */

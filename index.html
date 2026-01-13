@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Grow With Us - Book Your Session</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow With Us - Book Your Session</title>
+    <link rel="stylesheet" href="style.css?v=2">
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  </head>
+  
 <body>
 
 <!-- HERO -->
@@ -31,21 +31,27 @@
 </section>
 
 <!-- CALENDLY POPUP (hidden until openCalendly runs) -->
-<div id="calendlyPopup" class="calendly-popup">
+<div id="calendlyPopup" class="calendly-popup" style="display: none;">
   <div class="close-btn" onclick="closeCalendly()">×</div>
-  <div class="calendly-inline-widget" data-url="https://calendly.com/samiraramo815/30min?&background_color=222222&text_color=ffffff&primary_color=ffbd59"
-  style="min-width: 320px; height: 90vh;"></div>
+  <div id="calendlyWidget" style="min-width: 320px; height: 90vh;"></div>
 </div>
 
 <script>
+  let calendlyLoaded = false; // make sure we only load once
+
   function openCalendly() {
-    document.getElementById("calendlyPopup").style.display = "block";
-    Calendly.initInlineWidget({
-      url: "https://calendly.com/samiraramo815/30min?",
-      parentElement: document.querySelector('#calendlyPopup .calendly-inline-widget'),
-      prefill: {},
-      utm: {}
-    });
+    const popup = document.getElementById("calendlyPopup");
+    popup.style.display = "block";
+
+    if (!calendlyLoaded) {
+      Calendly.initInlineWidget({
+        url: "https://calendly.com/samiraramo815/30min?&background_color=222222&text_color=ffffff&primary_color=ffbd59",
+        parentElement: document.getElementById("calendlyWidget"),
+        prefill: {},
+        utm: {}
+      });
+      calendlyLoaded = true;
+    }
   }
 
   function closeCalendly() {

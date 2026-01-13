@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Pay for Booking</title></head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pay for Booking</title>
+  </head>
+  <body>
+    <h1>Complete Payment to Confirm Booking</h1>
 
-<h1>Complete Payment to Confirm Booking</h1>
+    <div id="info"></div>
+    <button id="checkoutBtn">Pay Now</button>
 
-<div id="info"></div>
-<button id="checkoutBtn">Pay Now</button>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      const stripe = Stripe("YOUR_STRIPE_PUBLISHABLE_KEY");
 
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-const stripe = Stripe("YOUR_STRIPE_PUBLISHABLE_KEY");
+      // Read values from URL
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get("name");
+      const email = params.get("email");
+      const eventType = params.get("event");
 
-// Read values from URL
-const params = new URLSearchParams(window.location.search);
-const name = params.get("name");
-const email = params.get("email");
-const eventType = params.get("event");
+      document.getElementById(
+        "info"
+      ).innerText = `Booking: ${eventType}\nName: ${name}\nEmail: ${email}`;
 
-document.getElementById("info").innerText =
-  `Booking: ${eventType}\nName: ${name}\nEmail: ${email}`;
-
-document.getElementById("checkoutBtn").addEventListener("click", () => {
-  stripe.redirectToCheckout({
-    lineItems: [{ price: "YOUR_PRICE_ID", quantity:1 }],
-    mode:"payment",
-    successUrl: window.location.origin + "/success.html",
-    cancelUrl: window.location.href
-  });
-});
-</script>
-
-</body>
+      document.getElementById("checkoutBtn").addEventListener("click", () => {
+        stripe.redirectToCheckout({
+          lineItems: [{ price: "YOUR_PRICE_ID", quantity: 1 }],
+          mode: "payment",
+          successUrl: window.location.origin + "/success.html",
+          cancelUrl: window.location.href,
+        });
+      });
+    </script>
+  </body>
 </html>
